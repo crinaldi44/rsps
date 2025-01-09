@@ -1,0 +1,17 @@
+version = '1.0'
+project.ext {
+    type = "server"
+}
+
+description = ""
+
+apply plugin: 'application'
+
+dependencies {
+    implementation project(':kronos-server')
+    implementation project(':kronos-api')
+}
+
+application {
+    mainClassName = 'io.ruin.central.Server'
+}
