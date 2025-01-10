@@ -77,7 +77,13 @@ public enum Food {
     PHLUXIA(45, 19.0, 20876, 20877, 20869, "a phluxia", "phluxia", 3, 65, 65, 65),
     KRYKET(60, 22.0, 20878, 20879, 20869, "a kryket", "kryket", 3, 80, 80, 80),
     MURNG(75, 25.0, 20880, 20881, 20869, "a murng", "murng", 3, 95, 95, 95),
-    PSYKK(90, 28.0, 20882, 20883, 20869, "a psykk", "psykk", 3, 104, 104, 104);
+    PSYKK(90, 28.0, 20882, 20883, 20869, "a psykk", "psykk", 3, 104, 104, 104),
+
+    // Stews
+    UNCOOKED_STEW(25, 117.0, 2001, 2003, 2005, "a stew", "stew", 3, 31, 31, 31),
+
+    // Eggs
+    SCRAMBLED_EGG(13, 50.0, 7076, 7078, 7090, "some scrambled egg", "scrambled egg", 3, 48, 48, 31);
 
     public final int levelRequirement, rawID, cookedID, burntID, itemOffset, burnLevelFire, burnLevelRange, burnLevelCookingGauntlets;
     public final double experience;

@@ -162,6 +162,7 @@ public enum Burning {
                 player.unlock();
             } else {
                 groundLog.remove();
+                player.publicSound(2596);
                 player.sendFilteredMessage("The fire catches and the logs begin to burn.");
                 player.getStats().addXp(StatType.Firemaking, burning.exp * pyromancerBonus(player), true);
                 burning.counter.increment(player, 1);

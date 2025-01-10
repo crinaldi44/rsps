@@ -15,6 +15,7 @@ public class Flax {
         }
         player.startEvent(event -> {
             player.lock();
+            player.privateSound(2581);
             player.animate(827);
             event.delay(1);
             player.getInventory().add(1779, 1);

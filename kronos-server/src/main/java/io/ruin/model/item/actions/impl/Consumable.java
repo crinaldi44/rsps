@@ -53,7 +53,9 @@ public class Consumable {
         });
 
         registerEat(7082, 1923, 5, "fried mushrooms");
+        registerEat(7078, 1923, 5, "scrambled egg");
         registerEat(2011, 1923, 19, "curry");
+        registerEat(2003, 1923, 11, "curry");
 
         registerEat(7054, 14, "chilli potato");
         registerEat(7058, 20, "mushroom potato");

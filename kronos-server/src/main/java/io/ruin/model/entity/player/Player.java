@@ -1155,7 +1155,7 @@ public class Player extends PlayerAttributes {
         /*
          * Messages
          */
-        sendMessage("Welcome to " + World.type.getWorldName() + "." + (" The Final Challenge!"));
+        sendMessage("Welcome to " + World.type.getWorldName() + ".");
 
         packetSender.sendDiscordPresence("Idle");
         if(World.weekendExpBoost)

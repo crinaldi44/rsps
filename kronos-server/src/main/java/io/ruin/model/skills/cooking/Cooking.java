@@ -47,6 +47,8 @@ public class Cooking {
                     break;
 
                 player.animate(anim);
+                player.privateSound(2577);
+
                 if (cookedFood(player, food, fire)) {
                     rawFood.setId(food.cookedID);
                     player.getStats().addXp(StatType.Cooking, food.experience * bonus(player, fire), true);
@@ -117,6 +119,7 @@ public class Cooking {
                 continue;
             }
             ItemObjectAction.register(food.rawID, "range", (player, item, obj) -> Cooking.cook(player, food, obj, 896, false));
+            ItemObjectAction.register(food.rawID, "fancy range", (player, item, obj) -> Cooking.cook(player, food, obj, 896, false));
             ItemObjectAction.register(food.rawID, "cooking range", (player, item, obj) -> Cooking.cook(player, food, obj, 896, false));
             ItemObjectAction.register(food.rawID, "fire", (player, item, obj) -> Cooking.cook(player, food, obj, 897, true));
             ItemObjectAction.register(food.rawID, "stove", (player, item, obj) -> Cooking.cook(player, food, obj, 896, false));
