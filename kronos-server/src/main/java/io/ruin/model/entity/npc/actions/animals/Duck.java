@@ -11,7 +11,7 @@ public class Duck {
             npc.getDef().swimClipping = true;
             npc.addEvent(e -> {
                 while(true) {
-                    e.delay(Random.get(200, 400));
+                    e.delay(Random.get(200, 800));
                     npc.forceText("Quack!");
                     npc.publicSound( 413, 7, 0);
                 }

@@ -1,0 +1,40 @@
+---
+identifier: "471a996c-2837-43ec-9f53-4b6eaf12fcbd"
+title: "Peksa's Helmet Shop"
+currency: "COINS"
+accessibleByIronMan: false
+canSellToStore: true
+restockRules:
+  restockTicks: 400
+  restockPerTick: 1
+defaultStock:
+  - id: 1139
+    amount: 5
+    price: 24
+  - id: 1137
+    amount: 3
+    price: 84
+  - id: 1141
+    amount: 3
+    price: 300
+  - id: 1143
+    amount: 1
+    price: 780
+  - id: 1145
+    amount: 1
+    price: 1920
+  - id: 1155
+    amount: 4
+    price: 44
+  - id: 1153
+    amount: 3
+    price: 154
+  - id: 1157
+    amount: 2
+    price: 550
+  - id: 1159
+    amount: 1
+    price: 1430
+  - id: 1161
+    amount: 1
+    price: 3520

@@ -411,7 +411,7 @@ public class World extends EventWorker {
             announcements = Arrays.asList(
                     "Need help? Join the \"help\" cc!",
                     "Make sure to vote to gain access to exclusive items!",
-                    "Looking to support Kronos? Type ::store ingame!",
+                    "Looking to support " + World.type.getWorldName() + "? Type ::store ingame!",
                     "Take the time to protect your account and set a bank pin and 2FA!",
                     "Please take the time to vote for us. It helps us out and takes two seconds! ::vote",
                     "Join ::discord to get closer to the community!",

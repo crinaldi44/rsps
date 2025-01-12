@@ -5,6 +5,7 @@ import io.ruin.Server;
 import io.ruin.api.buffer.InBuffer;
 import io.ruin.api.filestore.IndexFile;
 import io.ruin.api.utils.StringUtils;
+import io.ruin.model.World;
 import io.ruin.model.item.actions.ItemObjectAction;
 import io.ruin.model.map.object.actions.ObjectAction;
 
@@ -210,7 +211,7 @@ public class ObjectDef {
             varpBitId = -1;
         } else if (id == PORTAL_OF_CHAMPIONS) {
             //home teleport portal - where is this portal even used on real rs?
-            name = "Kronos Teleporter";
+            name = World.type.getWorldName() + " Teleporter";
             options[0] = "Teleport";
             options[1] = "Teleport-previous";
         } else if (id == 25203) {

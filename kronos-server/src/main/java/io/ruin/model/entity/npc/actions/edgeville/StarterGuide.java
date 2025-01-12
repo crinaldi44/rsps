@@ -225,7 +225,7 @@ public class StarterGuide {
             player.getPacketSender().turnCameraToLocation(2010, 3577, 500, 0, 30);
             e.delay(1);
             player.dialogue(new NPCDialogue(guide,
-                    "This is Kronos bank. It houses the normal bank<br>" +
+                    "This is " + World.type.getWorldName() + " bank. It houses the normal bank<br>" +
                             "amenities but also inside are the vote point and<br>" +
                             "donation managers."));
             e.waitForDialogue(player);
@@ -243,7 +243,7 @@ public class StarterGuide {
             player.getPacketSender().turnCameraToLocation(2032, 3571, 500, 0, 30);
             e.delay(1);
             player.dialogue(new NPCDialogue(guide,
-                    "Here is the construction portal. Kronos offers full<br>" +
+                    "Here is the construction portal. " + World.type.getWorldName() + " offers full<br>" +
                             "construction! There are also NPC's here to sell you<br>" +
                             "supplies to build your house and remodel it as well."));
             e.waitForDialogue(player);
