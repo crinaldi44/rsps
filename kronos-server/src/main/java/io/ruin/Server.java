@@ -159,7 +159,7 @@ public class Server extends ServerWrapper {
 
             siteDb = new Database(properties.getProperty("database_host"), "kronos", properties.getProperty("database_user"), properties.getProperty("database_password"));
             gameDb = new Database(properties.getProperty("database_host"), "game", properties.getProperty("database_user"), properties.getProperty("database_password"));
-            forumDb = new Database(properties.getProperty("database_host"), "community", properties.getProperty("database_user"), properties.getProperty("database_password"));
+            forumDb = new Database(properties.getProperty("database_host"), "xf2", properties.getProperty("database_user"), properties.getProperty("database_password"));
 
             DatabaseUtils.connect(new Database[]{gameDb, forumDb, siteDb}, errors -> {
                 if (!errors.isEmpty()) {

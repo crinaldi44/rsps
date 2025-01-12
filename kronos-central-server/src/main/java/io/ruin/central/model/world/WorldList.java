@@ -13,7 +13,7 @@ public class WorldList {
     private static final ConcurrentLinkedQueue<World> active = new ConcurrentLinkedQueue();
     private static boolean forceUpdate;
     private static int updateTicks;
-    private static final String AUTH_TOKEN = "s5T4zaigCbbs1p5gKuVr1RZ9THiFst";
+    private static final String AUTH_TOKEN = "VO2nMrpVKOaPPWjAyq24Un3a1LKLcvki";
 
     public static void start() {
         ProcessWorker worker = Server.newWorker("world-list", 1000L, 4);
@@ -56,7 +56,8 @@ public class WorldList {
             out.position(0);
             out.addInt(pos - 4);
             out.position(pos);
-            String result = PostWorker.post("https://community.kronos.rip/integration/world_updater.php?k=" + AUTH_TOKEN, out.toByteArray());
+            String result = PostWorker.post("http://localhost/integration/world_updater.php?k=" + AUTH_TOKEN, out.toByteArray());
+            Server.log(result);
             if (result == null || !result.equals("1")) {
                 throw new IOException("Failed to update world list!");
             }

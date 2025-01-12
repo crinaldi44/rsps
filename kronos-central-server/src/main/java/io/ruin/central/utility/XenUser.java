@@ -3,6 +3,7 @@ package io.ruin.central.utility;
 import io.ruin.api.utils.JsonUtils;
 import io.ruin.api.utils.XenPost;
 import io.ruin.central.Server;
+import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -44,7 +45,7 @@ public class XenUser {
         Server.worker.execute(() -> XenUser.load(name, false), xenUserConsumer);
     }
 
-    private static XenUser load(String search, boolean byId) {
+    private static XenUser loadUserUnsafePhp(String search, boolean byId) {
         HashMap<Object, Object> postMap = new HashMap<Object, Object>();
         postMap.put("t", byId ? 0 : 1);
         postMap.put("v", search);
@@ -72,6 +73,56 @@ public class XenUser {
             return null;
         }
     }
+
+    private static XenUser load(String search, boolean byId) {
+        HashMap<Object, Object> postMap = new HashMap<>();
+        postMap.put("t", byId ? 0 : 1);
+        postMap.put("v", search);
+
+        JSONObject result;
+        if (byId) {
+            result = XenforoUtils.getUserById(search);
+        } else {
+            result = XenforoUtils.getUser(search);
+        }
+
+        System.err.println("API Result: " + result);
+
+        // Check if "exact" exists and is an object
+        if (result == null || !result.has("exact") || result.get("exact") == null || !(result.get("exact") instanceof JSONObject)) {
+            return null;
+        }
+
+        try {
+            // Parse the "exact" object
+            JSONObject exact = result.getJSONObject("exact");
+
+            // Extract fields
+            String id = exact.optString("user_id");
+            String username = exact.optString("username");
+
+            if (id == null || id.isEmpty()) {
+                return INVALID_USER;
+            }
+
+            // Create and populate the XenUser object
+            XenUser user = new XenUser();
+            user.id = Integer.parseInt(id);
+            user.name = username != null ? username : "Unknown";
+            user.lastName = user.name;
+
+            // Cache the user
+            LOADED.put(user.name.toLowerCase(), user);
+
+            System.out.println("Loaded user: " + user.name);
+            return user;
+
+        } catch (Exception e) {
+            Server.logError("Error parsing 'exact': " + e.getMessage());
+            return null;
+        }
+    }
+
 
     public static XenUser get(int userId) {
         for (XenUser user : LOADED.values()) {

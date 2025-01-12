@@ -6,10 +6,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor @Getter
 public enum CustomWorldType {
 
-    PVP("KronosPK", "https://kronos.rip", "144.217.10.42", "144.217.10.42"),
-    ECO("Kronos", "https://kronos.rip", "144.217.10.42", "144.217.10.42"),
-    BETA("BETA", "167.114.217.217", "167.114.217.217", "144.217.10.42"),
-    DEV("Development", "127.0.0.1", "127.0.0.1", "127.0.0.1");
+    PVP("RuneScape", "https://kronos.rip", "144.217.10.42", "144.217.10.42"),
+    ECO("RuneScape", "https://kronos.rip", "144.217.10.42", "144.217.10.42"),
+    BETA("RuneScape", "167.114.217.217", "167.114.217.217", "144.217.10.42"),
+    DEV("RuneScape", "127.0.0.1", "127.0.0.1", "127.0.0.1");
 
     private final String name;
     private final String url;

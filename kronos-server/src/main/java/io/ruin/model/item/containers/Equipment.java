@@ -139,9 +139,11 @@ public class Equipment extends ItemContainer {
            // player.resetAnimation();
         }
         player.closeDialogue();
+        player.privateSound(selectedDef.getSoundId(), 1, 0);
     }
 
     public boolean unequip(Item equipped) {
+        ItemDef selectedDef = equipped.getDef();
         Inventory inventory = player.getInventory();
         Item inventoryStack = null;
         if(equipped.getDef().stackable)
@@ -158,6 +160,7 @@ public class Equipment extends ItemContainer {
             equipped.remove();
             inventory.set(freeSlot, equipped);
         }
+        player.privateSound(selectedDef.getSoundId(), 1, 0);
         return true;
     }
     @Override

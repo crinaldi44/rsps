@@ -10,6 +10,7 @@ public class StrongholdSecurity {
     private static void teleportPlayer(Player player, int x, int y) {
         player.startEvent(event -> {
             player.lock();
+            player.privateSound(2858);
             player.animate(4282);
             event.delay(1);
             player.getMovement().teleport(x, y);

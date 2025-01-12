@@ -11,6 +11,10 @@ import io.ruin.central.network.DefaultDecoder;
 import io.ruin.central.utility.Limbo;
 import io.ruin.central.utility.PlayerCounter;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Properties;
@@ -31,8 +35,16 @@ public class Server extends ServerWrapper {
         WorldList.start();
         try {
             Properties properties = new Properties();
+//            File systemProps = new File("server.properties");
+//            System.out.println("Looking for system.properties in " + systemProps.getAbsolutePath());
+//            try (InputStream in = new FileInputStream(systemProps)) {
+//                properties.load(in);
+//            } catch (IOException e) {
+//                logError("Failed to load server settings!", e);
+//                throw e;
+//            }
             NettyServer nettyServer = NettyServer.start("Kronos Central Server", PORT, DefaultDecoder.class, 5,
-                    Boolean.parseBoolean(properties.getProperty("offline_mode")));
+                    false);
             Runtime.getRuntime().addShutdownHook(new Thread(() -> {
                 System.out.println();
                 System.out.println("Gracefully shutting down central server...");

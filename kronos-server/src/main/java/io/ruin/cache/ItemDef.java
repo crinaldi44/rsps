@@ -105,6 +105,8 @@ public class ItemDef {
 
     public boolean tradeable;
 
+    public int soundId;
+
     public boolean wilderness;
 
     public String examine;
@@ -688,6 +690,10 @@ public class ItemDef {
             }
         }
         return -1;
+    }
+
+    public int getSoundId() {
+        return soundId;
     }
 
     public int getGroundOption(String... options) {

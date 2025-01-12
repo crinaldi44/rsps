@@ -225,7 +225,7 @@ public class MusicPlayer {
                 {"Hermit", "hermit", 9034},
                 {"High Seas", "high seas", 11057},
                 {"High Spirits", "high spirits"}, //todo
-                {"Home Sweet Home", "home sweet home"}, //todo
+                {"Home Sweet Home", "home sweet home", 29063}, //todo
                 {"HomeScape", "homescape"},
                 {"Horizon", "horizon", 11573},
                 {"Hypnotized", "hypnotized"}, //todo
@@ -262,7 +262,7 @@ public class MusicPlayer {
                 {"Jungly 2", "jungly2", 10802},
                 {"Jungly 3", "jungly3", 11055},
                 {"Karamja Jam", "karamja jam", 10900, 10899},
-                {"Kingdom", "kingdom", 11319},
+                //{"Kingdom", "kingdom", 11319},
                 {"Knightly", "knightly", 10291},
                 {"Knightmare", "knightmare"}, //todo
                 {"Kourend the Magnificent", "kourend_the_magnificent"}, //todo
@@ -619,8 +619,11 @@ public class MusicPlayer {
             }
             if(data != null) {
                 Object d = data[1];
-                if(d instanceof Integer)
-                    archiveId = (int) d;
+                // if(d instanceof Integer)
+                //     archiveId = (int) d;
+
+                archiveId = Server.fileStore.get(6).getArchiveId(name.toLowerCase().replaceAll("'", ""));
+
 //                else if((archiveId = Server.fileStore.get(6).getArchiveId((String) d)) == -1)
 //                    System.err.println("Warning, archive id not set for music track: \"" + name + "\"");
                 if(data.length > 2) {
@@ -645,15 +648,17 @@ public class MusicPlayer {
                 Config unlock = Config.MUSIC_UNLOCKS[varpPos - 1];
                 int value = unlock.get(player);
                 if((unlock.get(player) & (1 << varpShift)) == 0) {
-                /* unlock track */
+                    /* unlock track */
                     unlock.set(player, value | (1 << varpShift));
-                    player.sendFilteredMessage("<col=ff0000>You have unlocked a new music track: " + name);
+                    if(!name.equals("Spirit")) {
+                        player.sendFilteredMessage("<col=ff0000>You have unlocked a new music track: " + name);
+                    }
                 }
-                if(Config.MUSIC_PREFERENCE.get(player) == 1) {
+                // if(Config.MUSIC_PREFERENCE.get(player) == 1) {
                 /* auto-play track */
-                    player.getPacketSender().sendString(Interface.MUSIC_PLAYER, 5, name);
-                    player.getPacketSender().sendMusic(archiveId);
-                }
+                player.getPacketSender().sendString(Interface.MUSIC_PLAYER, 6, name);
+                player.getPacketSender().sendMusic(archiveId);
+                // }
             } catch(Throwable t) {
                 Server.logError("Error playing music track for region "+ player.getPosition().regionId() +" (varp pos:"+ varpPos +"): "+ t.getMessage()); //todo remove after find bug
             }
@@ -670,7 +675,7 @@ public class MusicPlayer {
                     }
                 }
                 Config.MUSIC_PREFERENCE.set(player, 0);
-                player.getPacketSender().sendString(Interface.MUSIC_PLAYER, 5, name);
+                player.getPacketSender().sendString(Interface.MUSIC_PLAYER, 6, name);
                 player.getPacketSender().sendMusic(archiveId);
             } catch(Throwable t) {
                 Server.logError("", t); //todo remove after find bug

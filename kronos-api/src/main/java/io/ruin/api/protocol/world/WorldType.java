@@ -1,10 +1,10 @@
 package io.ruin.api.protocol.world;
 
 public enum WorldType {
-    ECO("Kronos", "https://kronos.rip"),
-    BETA("Kronos BETA", "https://kronos.rip"),
-    PVP("KronosPK", "https://kronos.rip"),
-    DEV("Development", "http://127.0.0.1");
+    ECO("RuneScape", "https://kronos.rip"),
+    BETA("RuneScape", "https://kronos.rip"),
+    PVP("RuneScape", "https://kronos.rip"),
+    DEV("RuneScape", "http://127.0.0.1");
 
     WorldType(String worldName, String websiteUrl) {
         this.worldName = worldName;

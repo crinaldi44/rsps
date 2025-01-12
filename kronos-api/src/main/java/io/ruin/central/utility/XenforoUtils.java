@@ -11,11 +11,12 @@ import org.json.JSONObject;
  */
 public class XenforoUtils {
 
-    private static final String KRONOS_FORUMS = "https://community.kronos.rip/";
+    private static final String KRONOS_FORUMS = "http://localhost/";
     private static final String FIND_USER_REQ = KRONOS_FORUMS + "api/users/find-name?username=";
+    private static final String FIND_USER_ID_REQ = KRONOS_FORUMS + "api/users/";
     private static final String EDIT_USER = KRONOS_FORUMS + "api/users/";
     private static final String AUTH_REQ = KRONOS_FORUMS + "api/auth";
-    private static final String AUTH_KEY = "FZOJhAmnipXyr9KavWdKetbzOxXOQeBh";
+    private static final String AUTH_KEY = "VO2nMrpVKOaPPWjAyq24Un3a1LKLcvki";
 
     public static JSONObject attemptLogin(String user, String pass, String userIp) {
         JSONObject value = login(user, pass, userIp);
@@ -35,13 +36,24 @@ public class XenforoUtils {
     }
 
     public static JSONObject getUser(String username) {
+        Request request = new Request.Builder()
+                .url(FIND_USER_REQ + username)
+                .headers(Headers.of("XF-Api-Key", AUTH_KEY, "XF-Api-User", "1"))
+                .build();
+        return XenforoUtils.getUserRequestWrapper(request);
+    }
+
+    public static JSONObject getUserById(String id) {
+        Request request = new Request.Builder()
+                .url(FIND_USER_ID_REQ + id)
+                .headers(Headers.of("XF-Api-Key", AUTH_KEY, "XF-Api-User", "1"))
+                .build();
+        return XenforoUtils.getUserRequestWrapper(request);
+    }
+
+    public static JSONObject getUserRequestWrapper(Request request) {
         try {
             OkHttpClient http = new OkHttpClient();
-
-            Request request = new Request.Builder()
-            .url(FIND_USER_REQ + username)
-            .headers(Headers.of("XF-Api-Key", AUTH_KEY, "XF-Api-User", "1"))
-            .build();
 
             try (Response response = http.newCall(request).execute()) {
                 if (response.isSuccessful()) {
