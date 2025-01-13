@@ -41,9 +41,9 @@ public class MissSchism {
                         });
                         player.getPacketSender().fadeOut();
                         e.delay(3);
-                        player.getMovement().teleport(2130, 4915, 0);
-                        player.getPacketSender().moveCameraToLocation(2130, 4915, 300, 10, 100);
-                        player.getPacketSender().turnCameraToLocation(2128, 4919, 300, 10, 100);
+                        player.getMovement().teleport(2130, 4909, 0);
+                        player.getPacketSender().moveCameraToLocation(2130, 4915, 300, 100, 0);
+                        player.getPacketSender().turnCameraToLocation(2128, 4919, 300, 100, 0);
                         e.delay(2);
                         player.getPacketSender().fadeIn();
                         e.delay(10);
@@ -78,7 +78,6 @@ public class MissSchism {
 
     private static void startCutscene(Player player) {
         player.lock(LockType.FULL_ALLOW_LOGOUT);
-        player.getPacketSender().sendClientScript(39, "i", 100);
         player.getPacketSender().sendMapState(2);
         Config.LOCK_CAMERA.set(player, 1);
     }
@@ -86,7 +85,7 @@ public class MissSchism {
     private static void endCutscene(Player player) {
         player.getPacketSender().sendMapState(0);
         Config.LOCK_CAMERA.set(player, 0);
-        player.getPacketSender().resetCamera();
+//        player.getPacketSender().resetCamera();
         player.unlock();
     }
 
@@ -95,12 +94,12 @@ public class MissSchism {
         player.dialogue(
                 new NPCDialogue(MISS_SCHISM, "Oooh, my dear, have you heard the news?"),
                 new OptionsDialogue(
-                        new Option("Ok, tell me about the news.", () -> {
+                        new Option("Okay, tell me about the news.", () -> {
                             List<Dialogue> wiseOldManDialogue = wiseOldManDialogue(player, npc);
                             player.dialogue(
-                                    new PlayerDialogue("Ok, tell me about the news."),
+                                    new PlayerDialogue("Okay, tell me about the news."),
                                     new NPCDialogue(MISS_SCHISM, "It's terrible, absolutely terrible! Those poor people!"),
-                                    new PlayerDialogue("Ok, yeah."),
+                                    new PlayerDialogue("Okay, yeah."),
                                     new NPCDialogue(MISS_SCHISM, "And who'd have ever thought such a sweet old gentleman would do such a thing?"),
                                     new PlayerDialogue("Are we talking about the bank robbery?"),
                                     new NPCDialogue(MISS_SCHISM, "Oh yes, my dear. It was terrible! TERRIBLE!"),
