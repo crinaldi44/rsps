@@ -1,0 +1,25 @@
+---
+identifier: "01ae5c4f-0c5b-4c88-ba23-7bda2c464d1d"
+title: "Wine Shop"
+currency: "COINS"
+accessibleByIronMan: false
+canSellToStore: true
+restockRules:
+  restockTicks: 1500
+  restockPerTick: 1
+defaultStock:
+  - id: 1993
+    amount: 5
+    price: 1
+  - id: 3732
+    amount: 3
+    price: 1
+  - id: 20742
+    amount: 5
+    price: 140
+  - id: 7919
+    amount: 2
+    price: 500
+  - id: 7810
+    amount: 500
+    price: 1

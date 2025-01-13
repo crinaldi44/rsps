@@ -1176,7 +1176,7 @@ public class CommandHandler implements Incoming {
                     }
                     return true;
                 }
-                player.itemSearch("Select an item to spawn", false, itemId -> {
+                player.itemSearch("Select an item to spawn", true, itemId -> {
                     Item item = new Item(itemId, 1);
                     player.integerInput("How many would you like to spawn:", amt -> {
                         if(item.getDef().stackable)

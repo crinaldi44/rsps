@@ -1,0 +1,103 @@
+---
+identifier: "12def81a-82c2-430b-bac0-64fafef735d8"
+title: "Diango's Toy Store"
+currency: "COINS"
+accessibleByIronMan: false
+canSellToStore: false
+restockRules:
+  restockTicks: 20
+  restockPerTick: 1
+defaultStock:
+  - id: 2520
+    amount: 5
+    price: 150
+  - id: 2522
+    amount: 5
+    price: 150
+  - id: 2524
+    amount: 5
+    price: 150
+  - id: 2526
+    amount: 5
+    price: 150
+  - id: 4613
+    amount: 250
+    price: 75
+  - id: 18144
+    amount: 5
+    price: 75
+  - id: 18145
+    amount: 5
+    price: 75
+  - id: 11707
+    amount: 3
+    price: 45
+  - id: 11708
+    amount: 3
+    price: 45
+  - id: 11709
+    amount: 3
+    price: 45
+#  - id: 20519  # Goblin paint cannon
+#    amount: 100
+#    price: 225
+  - id: 13188
+    amount: 5
+    price: 750
+  - id: 13328
+    amount: 5
+    price: 73
+  - id: 13660
+    amount: 1
+    price: 300
+  - id: 13658
+    amount: 100
+    price: 150
+  - id: 13679
+    amount: 10
+    price: 150
+  - id: 13681
+    amount: 15
+    price: 300
+#  - id: 20710  # Tiger toy
+#    amount: 15
+#    price: 150
+#  - id: 20711  # Lion toy
+#    amount: 15
+#    price: 150
+#  - id: 20712  # Snow leopard toy
+#    amount: 15
+#    price: 150
+#  - id: 20713  # Amur leopard toy
+#    amount: 15
+#    price: 150
+  - id: 21314
+    amount: 5
+    price: 0
+  - id: 22355
+    amount: 100
+    price: 1
+  - id: 22360
+    amount: 100
+    price: 1
+  - id: 22363
+    amount: 100
+    price: 1
+  - id: 19699
+    amount: 100
+    price: 15
+  - id: 21354
+    amount: 100
+    price: 1
+  - id: 13203
+    amount: 100
+    price: 1
+  - id: 12600
+    amount: 100
+    price: 1
+  - id: 981
+    amount: 7
+    price: 21000
+  - id: 22364
+    amount: 100
+    price: 60

@@ -11,11 +11,11 @@ import org.json.JSONObject;
  */
 public class XenforoUtils {
 
-    private static final String KRONOS_FORUMS = "http://localhost/";
-    private static final String FIND_USER_REQ = KRONOS_FORUMS + "api/users/find-name?username=";
-    private static final String FIND_USER_ID_REQ = KRONOS_FORUMS + "api/users/";
-    private static final String EDIT_USER = KRONOS_FORUMS + "api/users/";
-    private static final String AUTH_REQ = KRONOS_FORUMS + "api/auth";
+    private static final String FORUM_URL = "http://localhost/";
+    private static final String FIND_USER_REQ = FORUM_URL + "api/users/find-name?username=";
+    private static final String FIND_USER_ID_REQ = FORUM_URL + "api/users/";
+    private static final String EDIT_USER = FORUM_URL + "api/users/";
+    private static final String AUTH_REQ = FORUM_URL + "api/auth";
     private static final String AUTH_KEY = "VO2nMrpVKOaPPWjAyq24Un3a1LKLcvki";
 
     public static JSONObject attemptLogin(String user, String pass, String userIp) {
@@ -40,7 +40,7 @@ public class XenforoUtils {
                 .url(FIND_USER_REQ + username)
                 .headers(Headers.of("XF-Api-Key", AUTH_KEY, "XF-Api-User", "1"))
                 .build();
-        return XenforoUtils.getUserRequestWrapper(request);
+        return XenforoUtils.requestWrapper(request);
     }
 
     public static JSONObject getUserById(String id) {
@@ -48,10 +48,10 @@ public class XenforoUtils {
                 .url(FIND_USER_ID_REQ + id)
                 .headers(Headers.of("XF-Api-Key", AUTH_KEY, "XF-Api-User", "1"))
                 .build();
-        return XenforoUtils.getUserRequestWrapper(request);
+        return XenforoUtils.requestWrapper(request);
     }
 
-    public static JSONObject getUserRequestWrapper(Request request) {
+    public static JSONObject requestWrapper(Request request) {
         try {
             OkHttpClient http = new OkHttpClient();
 
@@ -64,6 +64,19 @@ public class XenforoUtils {
             ex.printStackTrace();
         }
         return null;
+    }
+
+    public static JSONObject requestUsernameChange(
+            int userId,
+            String requestedUsername
+    ) {
+        Request request = new Request.Builder()
+                .url(FIND_USER_REQ + userId)
+                .post(RequestBody.create(MediaType.parse("application/json"), requestedUsername))
+                .headers(Headers.of("XF-Api-Key", AUTH_KEY, "XF-Api-User", "1"))
+                .build();
+
+        return XenforoUtils.requestWrapper(request);
     }
 
     public static JSONObject login(String username, String password, String userIp) {

@@ -267,6 +267,7 @@ public class BankPin {
             verified = true;
             recoverAt = 0L;
             player.sendMessage("You have successfully verified your PIN!");
+            player.privateSound(2274);
             player.closeInterfaces();
             if(verifiedAction != null)
                 verifiedAction.accept(player);
