@@ -25,6 +25,9 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static io.ruin.cache.ItemID.CURATORS_MEDALLION;
+import static io.ruin.cache.ItemID.LIZARDMAN_FANG;
+import static io.ruin.cache.ItemID.XERICS_TALISMAN_INERT;
 import static io.ruin.model.skills.construction.Construction.*;
 import static io.ruin.model.skills.construction.Material.*;
 
@@ -481,6 +484,15 @@ public enum Buildable {
     TELEPORT_FOCUS(50, 40, MID_BUILD, 8331, 13640, LIMESTONE_BRICK.item(2)),
     GREATER_TELEPORT_FOCUS(65, 500, MID_BUILD, 8332, 13641, MARBLE_BLOCK.item(1)),
     SCRYING_POOL(80, 2000, MID_BUILD, 8333, 13639, MARBLE_BLOCK.item(1)),
+
+    /**
+     * Portal nexus
+     */
+    MARBLE_PORTAL_NEXUS(72, 2000, MID_BUILD, 22705, 33354, MARBLE_BLOCK.item(4)),
+    GILDED_PORTAL_NEXUS(82, 2600, MID_BUILD, 22706, 33372, MARBLE_PORTAL_NEXUS, MARBLE_BLOCK.item(4), GOLD_LEAF.item(2)),
+    CRYSTALLINE_PORTAL_NEXUS(92, 2600, MID_BUILD, 22707, 33390, GILDED_PORTAL_NEXUS, MAGIC_STONE.item(2), GOLD_LEAF.item(2)),
+    MOUNTED_XERICS_TALISMAN(72, 800, HIGH_BUILD, 22708, 33411, MAHOGANY_PLANK.item(1), GOLD_LEAF.item(1), new Item(LIZARDMAN_FANG, 5000), new Item(XERICS_TALISMAN_INERT)),
+    MOUNTED_DIGSITE_PENDANT(82, 800, HIGH_BUILD, 22709, 33416, MAHOGANY_PLANK.item(1), GOLD_LEAF.item(1), new Item(CURATORS_MEDALLION)),
 
     /*
      * Formal garden

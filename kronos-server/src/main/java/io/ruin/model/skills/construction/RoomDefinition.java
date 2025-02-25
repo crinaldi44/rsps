@@ -47,6 +47,8 @@ public enum RoomDefinition {
             OUBLIETTE_FLOOR_SPACE, PRISON, OUBLIETTE_GUARD, LIGHTING, LADDER, EMPTY, DECORATION),
     PORTAL_CHAMBER(50, 100000, 233, 716, false, false, 14, "portal chamber", 1446, PortalChamberRoom.class,
             EMPTY, EMPTY, EMPTY, PORTAL_1, PORTAL_2, PORTAL_3, TELEPORT_FOCUS), // i assume the 3 empty slots are for the focused portals, but i decided to handle it differently
+    PORTAL_NEXUS(72, 200000, 235, 720, false, false, 28, "portal nexus", 1460, PortalNexusRoom.class,
+            EMPTY, EMPTY, AMULET_SPACE_1, AMULET_SPACE_2, PORTAL_NEXUS_RUG, PORTAL_NEXUS_CURTAINS, Hotspot.PORTAL_NEXUS),
     COMBAT_ROOM(32, 25000, 235, 716, false, false, 22, "combat room", 1438, SimpleRoom.class,
             COMBAT_RING, EMPTY, EMPTY, RACK, COMBAT_ROOM_DECORATION, COMBAT_DUMMY),
     GAMES_ROOM(30, 25000, 237, 716, false, false, 6, "games room", 1437, SimpleRoom.class,

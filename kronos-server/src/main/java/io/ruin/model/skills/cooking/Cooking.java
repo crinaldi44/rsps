@@ -119,6 +119,7 @@ public class Cooking {
                 continue;
             }
             ItemObjectAction.register(food.rawID, "range", (player, item, obj) -> Cooking.cook(player, food, obj, 896, false));
+            ItemObjectAction.register(food.rawID, 26181, (player, item, obj) -> Cooking.cook(player, food, obj, 896, false));
             ItemObjectAction.register(food.rawID, "fancy range", (player, item, obj) -> Cooking.cook(player, food, obj, 896, false));
             ItemObjectAction.register(food.rawID, "cooking range", (player, item, obj) -> Cooking.cook(player, food, obj, 896, false));
             ItemObjectAction.register(food.rawID, "fire", (player, item, obj) -> Cooking.cook(player, food, obj, 897, true));

@@ -81,6 +81,15 @@
     "walkRange": 0
   },
   {
+    "name": "Estate agent",
+    "id": 5419,
+    "x": 2981,
+    "y": 3370,
+    "z": 0,
+    "direction": "E",
+    "walkRange": 2
+  },
+  {
     "name": "Heskel",
     "id": 2679,
     "x": 3001,

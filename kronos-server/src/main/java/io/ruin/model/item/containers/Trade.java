@@ -217,7 +217,7 @@ public class Trade extends ItemContainer {
             return;
         }
         if(!targetTrade.sigmund) {
-            targetTrade.sendMessage("The other player declined the trade.");
+            targetTrade.sendMessage("Other player declined trade.");
             targetTrade.destroy(true);
             targetTrade.closeInterfaces();
         }
@@ -395,7 +395,7 @@ public class Trade extends ItemContainer {
                 if(item != null)
                     targetTrade.player.getInventory().add(item);
             }
-            sendMessage("Your trade with " + targetTrade.player.getName() + " was successful.");
+            sendMessage("Accepted trade.");
             if(targetTrade.targetTrade != null && (itemCount > 0 || targetTrade.itemCount > 0))
                 //Loggers.logTrade(player.getUserId(), player.getName(), player.getIp(), targetTrade.player.getUserId(), targetTrade.player.getName(), targetTrade.player.getIp(), items, targetTrade.items);
                 Loggers.logTrade(player, targetTrade.player, items, targetTrade.items);

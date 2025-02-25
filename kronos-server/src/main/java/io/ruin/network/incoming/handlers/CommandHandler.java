@@ -1148,6 +1148,7 @@ public class CommandHandler implements Incoming {
                 }
                 return true;
             }
+
             case "fi":
             case "fitem": {
                 int l = command.length() + 1;
@@ -1176,7 +1177,7 @@ public class CommandHandler implements Incoming {
                     }
                     return true;
                 }
-                player.itemSearch("Select an item to spawn", true, itemId -> {
+                player.itemSearch("Select an item to spawn", false, itemId -> {
                     Item item = new Item(itemId, 1);
                     player.integerInput("How many would you like to spawn:", amt -> {
                         if(item.getDef().stackable)
@@ -3194,6 +3195,28 @@ public class CommandHandler implements Incoming {
             }
             case "zoomcamera": {
                 player.getPacketSender().sendClientScript(39, "i", Integer.parseInt(args[0]));
+                return true;
+            }
+
+            case "mc": {
+                player.getPacketSender().moveCameraToLocation(
+                        Integer.parseInt(args[0]),
+                        Integer.parseInt(args[1]),
+                        Integer.parseInt(args[2]),
+                        0,
+                        101
+                );
+                return true;
+            }
+
+            case "rc": {
+                player.getPacketSender().turnCameraToLocation(
+                        Integer.parseInt(args[0]),
+                        Integer.parseInt(args[1]),
+                        Integer.parseInt(args[2]),
+                        0,
+                        101
+                );
                 return true;
             }
 

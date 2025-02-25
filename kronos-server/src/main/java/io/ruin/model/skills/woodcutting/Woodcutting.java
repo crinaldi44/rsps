@@ -3,26 +3,26 @@ package io.ruin.model.skills.woodcutting;
 import io.ruin.api.utils.NumberUtils;
 import io.ruin.api.utils.Random;
 import io.ruin.model.World;
-import io.ruin.model.content.upgrade.ItemEffect;
 import io.ruin.model.entity.player.Player;
 import io.ruin.model.entity.player.PlayerCounter;
 import io.ruin.model.entity.player.PlayerGroup;
+import io.ruin.model.inter.dialogue.NPCDialogue;
 import io.ruin.model.item.Item;
 import io.ruin.model.item.actions.impl.BirdNest;
 import io.ruin.model.item.actions.impl.skillcapes.WoodcuttingSkillCape;
-import io.ruin.model.item.attributes.AttributeExtensions;
 import io.ruin.model.map.ground.GroundItem;
 import io.ruin.model.map.object.GameObject;
 import io.ruin.model.map.object.actions.ObjectAction;
 import io.ruin.model.map.route.RouteFinder;
-import io.ruin.model.skills.CapePerks;
 import io.ruin.model.skills.firemaking.Burning;
 import io.ruin.model.stat.Stat;
 import io.ruin.model.stat.StatType;
 import io.ruin.process.event.EventConsumer;
 
-import java.util.List;
+import java.util.Objects;
 import java.util.function.Supplier;
+
+import static io.ruin.cache.NpcID.BANK_GUARD;
 
 public class Woodcutting {
 
@@ -92,6 +92,24 @@ public class Woodcutting {
                     event.delay(1);
                 }
                 if (attempts % 2 == 0 && successfullyCutTree(effectiveLevel, treeData, hatchet)) {
+                    if (treeData.treeName.equalsIgnoreCase("bankguard")) {
+                        final String[] randomDialogues = new String[] {
+                                "Ooooch!",
+                                "Oi!",
+                                "Watch what you're doing with that axe, you nit!",
+                                "You'll blow my cover! I'm meant to be hidden!",
+                                "Will you stop that?",
+                                "Don't draw attention to me!",
+                                "Hey - gerroff me!",
+                                "Ow! That really hurt!"
+                        };
+                        player.privateSound(513);
+                        player.resetAnimation();
+                        player.dialogue(
+                                new NPCDialogue(BANK_GUARD, Random.get(randomDialogues))
+                        );
+                        return;
+                    }
                     if (hatchet == Hatchet.INFERNAL && (Random.rollDie(3, 1) || player.infernalAxeSpecial > 0)) {
                         Burning burning = Burning.get(treeData.log);
                         if (burning != null) {
@@ -179,6 +197,8 @@ public class Woodcutting {
     }
 
     static {
+        ObjectAction.register(10041, "chop down", (player, obj) -> chop(Tree.BANK_GUARD, player, obj, 1342));
+
         ObjectAction.register(1278, "chop down", (player, obj) -> chop(Tree.REGULAR, player, obj, 1342));
         ObjectAction.register(1276, "chop down", (player, obj) -> chop(Tree.REGULAR, player, obj, 1342));
         ObjectAction.register(2091, "chop down", (player, obj) -> chop(Tree.REGULAR, player, obj, 1342));
